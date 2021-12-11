@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bg-change</title>
+  </head>
+  <style>
+      body{
+          margin: 0;
+          padding: 0;
+          font-family: sans-serif;
+      }
+      .container {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        transition: 0.2s;
+      }
+      label{
+          font-weight: bold;
+      }
+      select{
+          border-radius: 5px;
+          padding: 5px;
+          text-align: center;
+      }
+  </style>
+  <body>
+    <div class="container">
+      <div>
+        <label for="select">Elige un color: </label>
+        <select name="select" id="select">
+          <option value="white">White</option>
+          <option value="black">Black</option>
+          <option value="teal">Teal</option>
+          <option value="red">Red</option>
+          <option value="yellow">Yellow</option>
+        </select>
+        <h1 class="textbg"></h1>
+      </div>
+    </div>
+  </body>
+  <script>
+      const select = document.querySelector('select');
+      const container = document.querySelector('.container');
+      const p = document.querySelector('.textbg')
+
+      select.addEventListener('change',function(){
+          let color = select.value;
+
+          switch (color) {
+              case 'black':
+                  update('black','white')
+                  break;
+              case 'teal':
+                  update('teal','white')
+                  break;
+              case 'red':
+                  update('red','white')
+                  break;
+              case 'yellow':
+                  update('yellow','black')
+                  break;
+          
+              default:
+                  update('white','black')
+          }
+          
+      })
+
+      function update(bgColor,textColor){
+        container.style.backgroundColor = bgColor;
+        container.style.color = textColor
+        p.textContent = `El background es color ${bgColor}`;
+      }
+  </script>
+</html>
